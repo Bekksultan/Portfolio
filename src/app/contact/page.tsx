@@ -147,7 +147,7 @@ const socials = [
               <div className="w-3 h-3 rounded-full bg-primary animate-pulse" />
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold mb-6">
               <span className="bg-gradient-to-r from-foreground via-foreground to-primary bg-clip-text text-transparent">
                 Get in{" "}
               </span>
