@@ -312,86 +312,76 @@ export function ProjectsGrid() {
   }, [activeFilter])
 
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* HEADER */}
-        <div className="mb-14 md:mb-16 text-center">
-   
-            <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-foreground via-foreground to-primary bg-clip-text text-transparent">
-               Portfolio {" "}
-              </span>
-              <span className="relative">
-                <span className="text-primary">Showcase</span>
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
-              </span>
-            </h1>
+      <div className="mb-8 sm:mb-10 md:mb-14 lg:mb-16 text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold mb-3 sm:mb-4 md:mb-6">
+          <span className="bg-gradient-to-r from-foreground via-foreground to-primary bg-clip-text text-transparent">
+            Portfolio{" "}
+          </span>
+          <span className="relative">
+            <span className="text-primary">Showcase</span>
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
+          </span>
+        </h1>
 
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Explore a curated collection of work across industries and digital platforms, showcasing creativity and real-world results.
-            </p>
-          </div>
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed px-2">
+          Explore a curated collection of work across industries and digital platforms, showcasing creativity and real-world results.
+        </p>
+      </div>
 
-{/* FILTERS - PROFESSIONAL GRADE, SINGLE ROW, CRYSTAL CLEAR */}
-<div className="flex flex-nowrap items-center gap-1 sm:gap-2 mb-6 overflow-x-auto pb-2 ">
-  {categories.map((category) => {
-    const active = activeFilter === category
-    const count =
-      category === "All"
-        ? projects.length
-        : projects.filter((p) => p.category.includes(category)).length
+      {/* FILTERS - FIXED RESPONSIVE WRAPPING */}
+      <div className="mb-6 sm:mb-8">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+          {categories.map((category) => {
+            const active = activeFilter === category
+            const count =
+              category === "All"
+                ? projects.length
+                : projects.filter((p) => p.category.includes(category)).length
 
-    return (
-      <button
-        key={category}
-        onClick={() => setActiveFilter(category)}
-        className={`
-          flex-shrink-0 inline-flex items-center gap-1.5
-          px-4 py-2 text-base sm:text-base font-semibold
-          rounded-full transition-all duration-150
-          ${
-            active
-              ? // LIGHT MODE: BOLD PRIMARY - GUARANTEED VISIBILITY
-                "bg-primary text-white border border-primary " +
-                "shadow-md shadow-primary/40 " +
-                // DARK MODE: EQUALLY BOLD
-                "dark:bg-primary dark:text-neutral-950 dark:border-primary/80 " +
-                "dark:shadow-lg dark:shadow-primary/50"
-              : // LIGHT MODE: CLEAN, HIGH CONTRAST
-                "bg-white text-gray-800 border border-gray-300 " +
-                "hover:bg-gray-100 hover:border-gray-400 hover:text-gray-900 " +
-                "shadow-sm " +
-                // DARK MODE: PERFECTLY VISIBLE
-                "dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 " +
-                "dark:hover:bg-gray-800 dark:hover:border-gray-600 dark:hover:text-white"
-          }
-        `}
-      >
-        <span className="whitespace-nowrap">{category}</span>
-        <span
-          className={`
-            inline-flex items-center justify-center
-            px-2 py-0.5 text-xs font-bold rounded-full
-            min-w-[26px]
-            ${
-              active
-                ? "bg-white/30 text-white " +
-                  "dark:bg-black/30 dark:text-neutral-950"
-                : "bg-gray-300 text-gray-800 " +
-                  "dark:bg-gray-700 dark:text-gray-200"
-            }
-          `}
-        >
-          {count}
-        </span>
-      </button>
-    )
-  })}
-</div>
+            return (
+              <button
+                key={category}
+                onClick={() => setActiveFilter(category)}
+                className={`
+                  inline-flex items-center gap-1 sm:gap-1.5
+                  px-3 sm:px-4 py-1.5 sm:py-2 
+                  text-xs sm:text-sm md:text-base font-semibold
+                  rounded-full transition-all duration-150
+                  whitespace-nowrap
+                  ${
+                    active
+                      ? "bg-primary text-white border border-primary shadow-md shadow-primary/40 dark:bg-primary dark:text-neutral-950 dark:border-primary/80 dark:shadow-lg dark:shadow-primary/50"
+                      : "bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 hover:border-gray-400 hover:text-gray-900 shadow-sm dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800 dark:hover:border-gray-600 dark:hover:text-white"
+                  }
+                `}
+              >
+                <span>{category}</span>
+                <span
+                  className={`
+                    inline-flex items-center justify-center
+                    px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs font-bold rounded-full
+                    min-w-[18px] sm:min-w-[22px] md:min-w-[26px]
+                    ${
+                      active
+                        ? "bg-white/30 text-white dark:bg-black/30 dark:text-neutral-950"
+                        : "bg-gray-300 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
+                    }
+                  `}
+                >
+                  {count}
+                </span>
+              </button>
+            )
+          })}
+        </div>
+      </div>
 
       {/* RESULTS INFO */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
-        <div className="flex items-center gap-2.5 text-sm text-muted-foreground">
-          <Grid3x3 className="h-4 w-4" />
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6 sm:mb-8">
+        <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+          <Grid3x3 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
           <span>
             Showing{" "}
             <span className="font-semibold text-foreground">
@@ -404,7 +394,7 @@ export function ProjectsGrid() {
         {activeFilter !== "All" && (
           <button
             onClick={() => setActiveFilter("All")}
-            className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+            className="text-xs sm:text-sm font-medium text-primary hover:text-primary/80 transition-colors"
           >
             Clear filter
           </button>
@@ -412,48 +402,54 @@ export function ProjectsGrid() {
       </div>
 
       {/* GRID */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
         {filteredProjects.map((project) => {
           const card = (
-            <div className="group relative overflow-hidden rounded-xl border-2 border-primary/80 bg-gradient-to-b from-white/5 to-transparent transition-all duration-500 hover:scale-[1.02] hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 flex flex-col">
-              <div className="relative h-48 sm:h-52 overflow-hidden">
+            <div className="group relative overflow-hidden rounded-xl border-2 border-primary/80 bg-gradient-to-b from-white/5 to-transparent transition-all duration-500 hover:scale-[1.02] hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 flex flex-col h-full">
+              <div className="relative w-full pt-[56.25%] sm:pt-[60%] lg:pt-[56.25%] overflow-hidden bg-gray-100 dark:bg-gray-800">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                  onError={(e) => {
+                    // Fallback for broken images
+                    e.currentTarget.src = "/assets/projects/placeholder.png"
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1.5 text-xs rounded-full bg-black/80 text-white">
+                <div className="absolute top-2 sm:top-3 lg:top-4 left-2 sm:left-3 lg:left-4">
+                  <span className="px-2 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs rounded-full bg-black/80 text-white whitespace-nowrap">
                     {project.category[0]}
                   </span>
                 </div>
 
                 {project.link && (
-                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition">
-                    <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white shadow-lg">
-                      <ExternalLink className="h-4 w-4 text-black" />
+                  <div className="absolute top-2 sm:top-3 lg:top-4 right-2 sm:right-3 lg:right-4 opacity-0 group-hover:opacity-100 transition">
+                    <div className="h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9 flex items-center justify-center rounded-full bg-white shadow-lg">
+                      <ExternalLink className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-black" />
                     </div>
                   </div>
                 )}
               </div>
 
-              <div className="p-5 flex-1 flex flex-col">
-                <h3 className="text-lg font-bold group-hover:text-primary transition-colors">
+              <div className="p-3 sm:p-4 lg:p-5 flex-1 flex flex-col">
+                <h3 className="text-sm sm:text-base lg:text-lg font-bold group-hover:text-primary transition-colors line-clamp-2">
                   {project.title}
                 </h3>
                 {project.subtitle && (
-                  <p className="text-sm text-muted-foreground mt-1">
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-1 line-clamp-2">
                     {project.subtitle}
                   </p>
                 )}
 
-                <div className="mt-auto pt-3 opacity-0 group-hover:opacity-100 transition">
-                  <div className="flex items-center gap-2 border-t border-white/10 pt-3">
-                    <Eye className="h-3.5 w-3.5 text-primary" />
-                    <span className="text-xs text-muted-foreground">
+                <div className="mt-auto pt-2 sm:pt-3 opacity-0 group-hover:opacity-100 transition">
+                  <div className="flex items-center gap-1.5 sm:gap-2 border-t border-white/10 pt-2 sm:pt-3">
+                    <Eye className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary" />
+                    <span className="text-[10px] sm:text-xs text-muted-foreground">
                       View live project
                     </span>
                   </div>
@@ -467,12 +463,15 @@ export function ProjectsGrid() {
               key={project.id}
               href={project.link}
               target="_blank"
-              className="focus-visible:ring-2 focus-visible:ring-primary rounded-2xl"
+              rel="noopener noreferrer"
+              className="focus-visible:ring-2 focus-visible:ring-primary rounded-xl block h-full"
             >
               {card}
             </Link>
           ) : (
-            <div key={project.id}>{card}</div>
+            <div key={project.id} className="h-full">
+              {card}
+            </div>
           )
         })}
       </div>
