@@ -10,7 +10,7 @@ export default function BlogPage() {
       <main className="flex-1 p-8">
         <div className="mb-16 md:mb-20 text-center">
    
-            <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold mb-6">
               <span className="bg-gradient-to-r from-foreground via-foreground to-primary bg-clip-text text-transparent">
                Thoughts  {" "}
               </span>
