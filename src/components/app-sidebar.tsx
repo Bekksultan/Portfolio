@@ -72,10 +72,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   return (
     <Sidebar collapsible="icon" {...props} className="border-double border-neutral-400">
-        <SidebarHeader className="border-b border-double border-neutral-400">
+      <SidebarHeader className="border-b border-double border-neutral-400">
         <div className="flex items-center gap-3 px-4 py-6 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0">
           <div className="relative w-14 h-14 flex-shrink-0 transition-all duration-200 group-data-[collapsible=icon]:w-10 group-data-[collapsible=icon]:h-10">
-           <a href="./"><Image src="/assets/bek-logo.png" alt="logo" fill className="object-contain" /></a> 
+            <Link href="./" className="block relative w-full h-full">
+              <Image 
+                src="/assets/bek-logo.png" 
+                alt="logo" 
+                fill
+                sizes="(max-width: 768px) 40px, 56px"
+                className="object-contain"
+                priority
+              />
+            </Link>
           </div>
           <div className="flex flex-col group-data-[collapsible=icon]:hidden">
             <span className="text-lg font-bold text-foreground">BA Portfolio</span>
@@ -109,7 +118,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter></SidebarFooter>
+      <SidebarFooter />
     </Sidebar>
   )
 }
